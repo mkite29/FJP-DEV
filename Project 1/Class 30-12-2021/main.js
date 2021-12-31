@@ -1,92 +1,101 @@
-    //Changes 3.
-    (function(){
-        let btnAddFolder = document.querySelector("#btnAddFolder");
-        let divContainer = document.querySelector("#divContainer");
-        let pageTemplates = document.querySelector("#pageTemplates");
-        
+(function(){
+    let btnAddFolder = document.querySelector("#btnAddFolder");
+    let divContainer = document.querySelector("#divContainer");
+    let pageTemplates = document.querySelector("#pageTemplates");
+    let fid = 0;
+    let folders = [];
 
-        let fid = 0;
+    btnAddFolder.addEventListener("click", addFolder);
 
-        //folders naam ka array banaya hai phle.
-        let folders = [];
-        
-        // let fjson = localStorage.getItem("data");
-        // if(fjson.length > 0){
-        //     folders = JSON.parse();
-        // }
+    function addFolder(){
+        let fname = prompt("Enter folder's name");
+        if(!!fname){
+            fid++;
+            addFolderHTMLToPage(fname, fid);
 
-
-        btnAddFolder.addEventListener("click", function(){
-            let fname = prompt("Folder name?");
-
-            if(fname == null){
-                return;
-            }
-            
-           
-    
-            let divFolderTemplate = pageTemplates.content.querySelector(".folder");
-            let divFolder = document.importNode(divFolderTemplate, true);
-            let divName = divFolder.querySelector("[purpose = 'name']");
-            
-            divName.innerHTML = fname;
-            divFolder.setAttribute("fid", ++fid);
-
-           
-
-            //delete
-
-            let spanDelete = divFolder.querySelector("span[action ='delete']");
-
-            spanDelete.addEventListener("click", function(){
-            
-                let flag = confirm("Do you want to delete the folder " + divName.innerHTML);
-                
-                if(flag == true){
-                    divContainer.removeChild(divFolder);
-                    let idx = folders.findIndex(f => f.id == parseInt(divFolder.getAttribute("fid")));
-                    folders.splice(idx, 1);
-                    persistFolders();
-                }
-            });
-            
-
-            //edit
-            let spanEdit = divFolder.querySelector("span[action = 'edit']");
-
-            spanEdit.addEventListener("click",function(){
-                let fname = prompt("Enter the folder's new name");
-                
-                if(!fname){
-                    return;
-                }
-
-                // let divName = divFolder.querySelector("[purpose = 'name']");
-                // divName.innerHTML = fname;
-                divName.innerHTML = fname;
-
-                let folder = folders.find(f => f.id == parseInt(divFolder.getAttribute("fid")));
-                folder.name = fname;
-                persistFolders();
-
-            });
-
-              divContainer.appendChild(divFolder);
-                folders.push({
+            folders.push({
                 id: fid,
                 name: fname
             });
-            persistFolders();
-
-        });
-
-        function persistFolders(){
-            console.log(folders);
-            let fjson = JSON.stringify(folders);
-            localStorage.setItem("data", fjson);
+            persistDataToStorage();
         }
-})();
+    }
 
+    function editFolder(){
+        let divFolder = this.parentNode; 
+        let divName = divFolder.querySelector("[purpose='name']");
+
+        let fname = prompt("Enter new folder's name for " + divName.innerHTML);
+        if(!!fname){
+            divName.innerHTML = fname;
+
+            let fid = parseInt(divFolder.getAttribute("fid"));
+            let folder = folders.find(function(f){
+                return f.id == fid;
+            });
+            folder.name = fname;
+
+            persistDataToStorage();
+        }
+    }
+
+    function deleteFolder(){
+        let divFolder = this.parentNode; 
+        let divName = divFolder.querySelector("[purpose='name']");
+
+        let flag = confirm("Do you want to delete " + divName.innerHTML);
+        if(flag){
+            divContainer.removeChild(divFolder);
+
+            let fid = parseInt(divFolder.getAttribute("fid"));
+            let idx = folders.findIndex(function(f){
+                return f.id == fid;
+            });
+            folders.splice(idx, 1);
+
+            persistDataToStorage();
+        }
+    }
+
+    function addFolderHTMLToPage(fname, fid){
+        let divFolderTemplate = pageTemplates.content.querySelector(".folder");
+        let divFolder = document.importNode(divFolderTemplate, true);
+
+        let divName = divFolder.querySelector("[purpose='name']");
+        let spanEdit = divFolder.querySelector("[action='edit']");
+        let spanDelete = divFolder.querySelector("[action='delete']");
+
+        divName.innerHTML = fname;
+        spanEdit.addEventListener("click", editFolder);
+        spanDelete.addEventListener("click", deleteFolder);
+        divFolder.setAttribute("fid", fid);
+
+        divContainer.appendChild(divFolder);
+    }
+
+    function persistDataToStorage(){
+        let fjson = JSON.stringify(folders);
+        localStorage.setItem("data", fjson);
+    }
+
+    function loadDataFromStorage(){
+        let fjson = localStorage.getItem("data");
+        if(!!fjson){
+            folders = JSON.parse(fjson);
+            let maxId = -1;
+            folders.forEach(f => {
+                addFolderHTMLToPage(f.name, f.id);
+                if(f.id > maxId){
+                    maxId = f.id;
+                }
+            });
+
+            fid = maxId;
+        }
+    }
+
+    loadDataFromStorage();
+})();
 
 
     //Changes 1.
