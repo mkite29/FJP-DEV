@@ -1,0 +1,95 @@
+#header{
+    border-radius: 10px;
+    border: 2px solid yellow;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+/* header mei jo 2 buttons the add folder aur add text file unko*/
+/*round  shape banaya hai and back ground color and margin and padding set ki hai*/
+#header button{
+
+    font-weight: 600;
+    background-color: aquamarine;
+    border-radius: 10px;
+    padding:20px;
+    margin:10px;
+    cursor:pointer;
+
+
+}
+
+/* Mouse se hover kerne per in out effect ayega*/
+#header button:hover{
+
+    transform:  scale(1.02);
+    background-color: lightyellow;
+
+}
+
+/* bread ki tarah layer by layer dikahne ki liye*/
+#breadcrumb{
+    border-radius: 10px;
+    border: 1px solid yellow;
+    margin: 10px;
+    padding: 10px;
+    
+}
+
+/*container mei basically jo folders and sub folders add hue hai*/
+#container{
+    border-radius: 10px;
+    border: 2px solid yellow;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+}
+
+/* ye baad mei implement karengei*/
+#app{
+    border-radius: 10px;
+    border: 1px solid yellow;
+    margin: 10px;
+    padding: 10px;
+}
+
+/*ek single folder jab add hua uski specifications set ki hai*/
+.folder{
+    border-radius: 10px;
+    background-color: blueviolet;
+    color: white;
+    height: 120px;
+    width: 150px;
+
+    margin: 10px;
+    padding: 10px;
+
+    border:4px solid palevioletred;
+    border-radius: 10px;
+}
+
+/*Folder ke name mei */
+.folder div[purpose=name]{
+    text-align: center;
+    font-weight: 900;
+    margin-top: 80px;
+    
+}
+
+.folder [purpose]:hover{
+    text-decoration: underline;
+    color: yellow;
+}
+
+
+.folder [action]{
+    text-align: center;
+    cursor: pointer;
+}
+
+.folder [action]:hover{
+    text-decoration: underline;
+    color: yellow;
+}
