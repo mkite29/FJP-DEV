@@ -1,0 +1,243 @@
+#header{
+    border-radius: 10px;
+    border: 2px solid yellow;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+/* header mei jo 2 buttons the add folder aur add text file unko*/
+/*round  shape banaya hai and back ground color and margin and padding set ki hai*/
+#header button{
+
+    font-weight: 600;
+    background-color: aquamarine;
+    border-radius: 10px;
+    padding:20px;
+    margin:10px;
+    cursor:pointer;
+
+
+}
+
+/* Mouse se hover kerne per in out effect ayega*/
+#header button:hover{
+
+    transform:  scale(1.02);
+    background-color: lightyellow;
+
+}
+
+/* bread ki tarah layer by layer dikahne ki liye*/
+#breadcrumb{
+    border-radius: 10px;
+    border: 1px solid yellow;
+    margin: 10px;
+    display: flex;
+    
+}
+
+#breadcrumb a{
+    background-color: tomato;
+    padding: 10px;
+    border-right: 5px solid black;
+}
+
+#breadcrumb a:hover{
+    background-color: teal;
+    text-decoration: underline;
+}
+
+/*container mei basically jo folders and sub folders add hue hai*/
+#container{
+    border-radius: 10px;
+    border: 2px solid yellow;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+}
+
+/* ye baad mei implement karengei*/
+
+
+/*ek single folder jab add hua uski specifications set ki hai*/
+.folder{
+    border-radius: 10px;
+    background-color: blueviolet;
+    color: white;
+    height: 120px;
+    width: 150px;
+
+    margin: 10px;
+    padding: 10px;
+
+    border:4px solid palevioletred;
+    border-radius: 10px;
+}
+
+/*Folder ke name mei */
+.folder div[purpose=name]{
+    text-align: center;
+    font-weight: 900;
+    margin-top: 80px;
+    
+}
+
+.folder [purpose]:hover{
+    text-decoration: underline;
+    color: yellow;
+}
+
+
+.folder [action]{
+    text-align: center;
+    cursor: pointer;
+}
+
+.folder [action]:hover{
+    text-decoration: underline;
+    color: yellow;
+}
+
+/*text file ke liye  kaam ker rahe hai*/
+.text-file{
+    border-radius: 10px;
+    background-color: lightcoral;
+    color: white;
+    height: 120px;
+    width: 150px;
+
+    margin: 10px;
+    padding: 10px;
+
+    border:4px solid red;
+    border-radius: 10px;
+}
+
+/*Folder ke name mei */
+.text-file div[purpose=name]{
+    text-align: center;
+    font-weight: 900;
+    margin-top: 80px;
+    
+}
+
+.text-file [purpose]:hover{
+    text-decoration: underline;
+    color: yellow;
+}
+
+
+.text-file [action]{
+    text-decoration: underline;
+    text-align: center;
+    cursor: pointer;
+}
+
+.text-file [pressed = true]{
+    text-decoration: underline;
+    color: blue;
+    transform: scale(2);
+}
+
+
+/*app ke liye functinality add ler rahe hai */
+
+#app{
+    border-radius: 10px;
+    border: 2px solid blue;
+    margin: 10px;
+    padding: 10px;
+}
+
+#app-title-bar{
+    display: flex;
+    background-color: lightcoral;
+    height: 40px;
+}
+
+#app-title{
+    width: 92%;
+    text-align: center;
+    border-right: 5px solid red;
+}
+
+#app-menu-bar{
+    display: flex;
+    background-color: teal;
+    height: 50px;
+}
+
+#app-body{
+
+    display: flex;
+    background-color: springgreen;
+    height: 500px;
+}
+
+/*Notepad file ko neeche view kerne per open kerke ka option ke liye css style ker rahe hai */
+
+/*
+
+/* asterik se usmei jo bhi hai vo apas mei unki styling kerta hai */
+.notepad-menu{
+    border: 1px solid white;
+    width: 100%;
+    padding: 5px;
+}
+
+/* apas mei gap and top and bottom se 0 0 ka gap */
+.notepad-menu * {
+    margin: 0px 5px;
+    padding: 2px;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.notepad-menu span{
+    vertical-align: bottom;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+/* button jaisa banane ke kiye hover lagare hai */
+.notepad-menu span:hover{
+    /* vertical-align: bottom; */
+
+    border: 2px solid black;
+    background-color: yellow;
+    color: teal
+}
+
+
+.notepad-menu [pressed = true]{
+    /* vertical-align: bottom; */
+
+    border: 2px solid black;
+    background-color: yellow;
+    color: teal
+}
+
+/* jiska type color hai uski width change ker di */
+.notepad-menu input[type = color]{
+    width: 30px;
+}
+
+.notepad-menu select {
+    height: 30px;
+}
+
+.notepad-body{
+    height: 100%;
+    width: 100%;
+}
+
+.notepad-body textarea{
+    height: 100%;
+    width: 100%;
+}
+
+
