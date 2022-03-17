@@ -1,0 +1,156 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+#action-bar {
+    background-color: orange;
+    height: 8vh;
+    display: flex;
+}
+
+#action-bar * {
+    border: 3px solid brown;
+    border-radius: 5px;
+    margin: 10px 5px;
+    padding: 1px;
+    cursor: pointer;
+}
+
+#action-bar span:hover {
+    background-color: white;
+}
+
+#action-bar select {
+    background-color: rgb(36, 210, 233);
+}
+
+#action-bar select option {
+    margin: 10px;
+    border-bottom: 2px solid orange;
+}
+
+#content {
+    height: 92vh;
+    display: flex;
+}
+
+
+#content-list {
+    width: 15vw;
+    padding: 5px;
+}
+
+#content-details {
+    border: 5px solid black;
+    width: 85vw;
+}
+
+#content-details-overlay {
+    display: none;
+    position: fixed;
+    height: 92vh;
+    width: 100vw;
+    top:8vh;
+    left: 15vw;
+    background-color: coral;
+    opacity: 0.5;
+    z-index: 2;
+    cursor: pointer;
+}
+
+#overlay {
+    position: fixed;
+    height: 92vh;
+    width: 100vw;
+    top:8vh;
+    left:0%;
+    background-color: coral;
+    opacity: 0.5;
+    z-index: 1;
+    cursor: pointer;
+}
+
+#text {
+    position: absolute;
+    font-size: 50px;
+    color: white;
+    width: 50%;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    
+    /* vertically aligning text within div*/
+    line-height: 100px;
+    vertical-align:middle;
+
+    text-align: center; /*horizontally align text within this div*/
+    text-decoration: underline;
+}
+
+#new-slide {
+    
+    background-color: greenyellow;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 100px;
+    vertical-align: middle;
+    cursor: pointer;
+    color: black;
+    font-weight: 900;
+    margin: 5px;
+}
+
+#new-slide:hover {
+    transform: scale(1.02);
+    background-color: yellow;
+}
+
+#slide-list{
+    height: calc(92vh - 120px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#create-slide {
+    display: none;
+}
+
+#create-slide div {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    background-color: thistle;
+}
+
+#create-slide textarea {
+    width: 90%;
+    height: 60vh;
+    font-size: 30px;
+    border-radius: 14px;
+    
+}
+
+#create-slide input {
+    width: 90%;
+    height: 6vh;
+    font-size: 30px;
+    border-radius: 10px;
+    
+}
+
+#create-slide button {
+    padding: 20px;
+    border-radius: 4px;
+    background-color: purple;
+    color: white;
+    cursor: pointer;
+}
+
+#show-slide {
+    display: none;
+}
